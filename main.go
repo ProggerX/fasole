@@ -4,10 +4,9 @@ import (
     tea "github.com/charmbracelet/bubbletea"
 	"os"
 	"strings"
+	"embed"
 	"fmt"
-	"io"
 	"github.com/charmbracelet/glamour"
-	"net/http"
 )
 
 func parseFile(path string) ([]task, error) {
@@ -39,6 +38,9 @@ func saveFile(tasks []task, path string) (error) {
 	return err
 }
 
+//go:embed MANUAL.md
+var f embed.FS
+
 func main() {
 	var m model
 
@@ -46,8 +48,7 @@ func main() {
 		fmt.Println("Expected exactly one argument - db filename. For more info use \"fasole help\"")
 		os.Exit(1)
 	} else if os.Args[1:][0] == "help" {
-		res, _ := http.Get("https://raw.githubusercontent.com/ProggerX/fasole/main/MANUAL.md")
-		bts, _ := io.ReadAll(res.Body)
+		bts, _ := f.ReadFile("MANUAL.md")
 		str := string(bts)
 		r, _ := glamour.NewTermRenderer(
 			glamour.WithAutoStyle(),
