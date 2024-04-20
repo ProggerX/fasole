@@ -1,6 +1,8 @@
 # Fasole is minimalist's todo-list
 It's TUI tool to manage plain-text todo-lists for daily use
 
+![Screenshot](https://raw.githubusercontent.com/ProggerX/fasole/main/screenshot.png)
+
 ## Installation
 ```go install github.com/ProggerX/fasole@latest```
 
