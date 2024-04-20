@@ -21,8 +21,8 @@ func parseFile(path string) ([]task, error) {
 	var str string = string(bts)
 	for _, t := range strings.Split(str, "\n")[:len(strings.Split(str, "\n")) - 1] {
 		result = append(result, task{
-			name: t[1:],
-			is_complete: func() bool { if t[0] == 'X' {return true} else {return false}}(),
+			name: t[6:],
+			is_complete: func() bool { if t[3] == 'x' {return true} else {return false}}(),
 		})
 	}
 
@@ -32,7 +32,7 @@ func parseFile(path string) ([]task, error) {
 func saveFile(tasks []task, path string) (error) {
 	var str string = ""
 	for _, t := range tasks {
-		str += fmt.Sprintf("%s%s\n", func() string { if t.is_complete { return "X" } else { return " "} }(), t.name)
+		str += fmt.Sprintf("- [%s] %s\n", func() string { if t.is_complete { return "x" } else { return " "} }(), t.name)
 	}
 	bts := []byte(str)
 	err := os.WriteFile(path, bts, 0666)
@@ -46,7 +46,7 @@ func main() {
 		fmt.Println("Expected exactly one argument - db filename. For more info use \"fasole help\"")
 		os.Exit(1)
 	} else if os.Args[1:][0] == "help" {
-		res, _ := http.Get("https://raw.githubusercontent.com/ProggerX/fasole/main/README.md")
+		res, _ := http.Get("https://raw.githubusercontent.com/ProggerX/fasole/main/MANUAL.md")
 		bts, _ := io.ReadAll(res.Body)
 		str := string(bts)
 		r, _ := glamour.NewTermRenderer(

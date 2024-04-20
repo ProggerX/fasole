@@ -59,13 +59,13 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m model) View() string {
-	var s string
+	var s string = "Fasole v1.2.0\n\n"
 	if m.creationd.isShown == false {
 		for i, itm := range m.tasks {
 			if m.cursor == i {
-				s += fmt.Sprintf("> [%s] %s\n", func() string { if itm.is_complete { return "X" } else { return " " }}(), itm.name)
+				s += fmt.Sprintf("> [%s] %s\n", func() string { if itm.is_complete { return "x" } else { return " " }}(), itm.name)
 			} else {
-				s += fmt.Sprintf("  [%s] %s\n", func() string { if itm.is_complete { return "X" } else { return " " }}(), itm.name)
+				s += fmt.Sprintf("  [%s] %s\n", func() string { if itm.is_complete { return "x" } else { return " " }}(), itm.name)
 			}
 		}
 		s += "\n"

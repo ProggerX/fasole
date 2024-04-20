@@ -1,5 +1,5 @@
 # Fasole is minimalist's todo-list
-It's TUI tool to manage plain-text todo-lists for daily use
+It's TUI tool to manage Markdown todo-lists for daily use
 
 ![Screenshot](https://raw.githubusercontent.com/ProggerX/fasole/main/screenshot.png)
 
@@ -9,5 +9,5 @@ It's TUI tool to manage plain-text todo-lists for daily use
 ## Usage
 - Create a new list and start working: ```fasole <filename>```
 - Open an existing list: ```fasole <filename>```
-- Get help (renders this README): ```fasole help```
-- To get help in app keybinds: *just press 'h' button*
+- Get help in app: *just press 'h' button*
+- Get more help: ```fasole help```
