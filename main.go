@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 	"fmt"
+	"io"
 	"github.com/charmbracelet/glamour"
 	"net/http"
 )
@@ -45,7 +46,14 @@ func main() {
 		fmt.Println("Expected exactly one argument - db filename. For more info use \"fasole help\"")
 		os.Exit(1)
 	} else if os.Args[1:][0] == "help" {
-		 
+		res, _ := http.Get("https://raw.githubusercontent.com/ProggerX/fasole/main/README.md")
+		bts, _ := io.ReadAll(res.Body)
+		str := string(bts)
+		r, _ := glamour.NewTermRenderer(
+			glamour.WithAutoStyle(),
+		)
+		coolStr, _ := r.Render(str)
+		fmt.Print(coolStr)
 	} else {
 		tasks, err := parseFile(os.Args[1:][0])
 		if err != nil {
