@@ -7,15 +7,18 @@ import "fmt"
 func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
-		if msg.String() == "q" || msg.String() == "ctrl+c" {
+		if msg.String() == "ctrl+c" {
 			saveFile(m.tasks, os.Args[1])
 			return m, tea.Quit
 		} else if m.creationd.isShown == false {
 			switch msg.String() {
+			case "q":
+				saveFile(m.tasks, os.Args[1])
+				return m, tea.Quit
 			case "j":
-			if m.cursor < len(m.tasks) - 1 {
-				m.cursor++
-			}
+				if m.cursor < len(m.tasks) - 1 {
+					m.cursor++
+				}
 			case "k":
 				if m.cursor > 0 {
 					m.cursor--
