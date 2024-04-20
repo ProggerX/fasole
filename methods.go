@@ -62,7 +62,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m model) View() string {
-	var s string = "Fasole v1.2.1\n\n"
+	var s string = "Fasole v1.2.2\n\n"
 	if m.creationd.isShown == false {
 		for i, itm := range m.tasks {
 			if m.cursor == i {
