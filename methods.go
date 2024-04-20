@@ -18,10 +18,14 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			case "j":
 				if m.cursor < len(m.tasks) - 1 {
 					m.cursor++
+				} else {
+					m.cursor = 0
 				}
 			case "k":
 				if m.cursor > 0 {
 					m.cursor--
+				} else {
+					m.cursor = len(m.tasks) - 1
 				}
 			case "a":
 				m.creationd.isShown = true
@@ -62,7 +66,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m model) View() string {
-	var s string = "Fasole v1.2.2\n\n"
+	var s string = "Fasole v1.2.3\n\n"
 	if m.creationd.isShown == false {
 		for i, itm := range m.tasks {
 			if m.cursor == i {
