@@ -25,7 +25,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			case "o":
 				m.creationd.isShown = true
 			case " ":
-				m.tasks[m.cursor].is_complete = !m.tasks[m.cursor].is_complete
+				if len(m.tasks) > 0 {
+					m.tasks[m.cursor].is_complete = !m.tasks[m.cursor].is_complete
+				}
 			case "d":
 				if len(m.tasks) > 0 {
 					m.tasks = append(m.tasks[:m.cursor], m.tasks[m.cursor + 1:]...)
