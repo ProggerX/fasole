@@ -4,6 +4,9 @@ It's TUI tool to manage Markdown todo-lists for daily use
 ![Screenshot](https://raw.githubusercontent.com/ProggerX/fasole/main/screenshot.png)
 
 ## Installation
+### Nix
+Install ```fasole``` package
+### Other
 ```go install github.com/ProggerX/fasole@latest```
 
 ## Usage
